@@ -9,10 +9,13 @@ const modalResult = document.querySelector(".modal_result");
 const cancel = document.querySelector(".cancel");
 const modalResultContext = document.querySelector(".modal_result_context");
 
+const startModal = document.querySelector("#start_modal");
+const startModalButton = document.querySelector("#startGame");
+
 let contArray = [];
 let arrayLength = contentWrap.length;
 let count = 0;
-setInterval(mount(), 500);
+setInterval(() => mount(), 500);
 
 function mount() {
   count = (count + 1) % arrayLength;
@@ -103,5 +106,8 @@ cancel.addEventListener("click", () => {
   modal.classList.remove("open");
   toggleModal(false);
 });
-
-btnClick();
+// console.log(startModalButton);
+startModalButton.addEventListener("click", (e) => {
+  startModal.classList.add("start");
+  btnClick();
+});

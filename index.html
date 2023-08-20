@@ -5,30 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./assets/css/reset.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
+
     <title>가위바위보</title>
   </head>
   <body>
     <main id="main">
-      <section class="content">
-        <article class="article">
-          <div class="rock">✊</div>
-          <div class="scissor">✌️</div>
-          <div class="paper">✋</div>
-        </article>
-        <article class="buttonWrap">
-          <button class="rockBtn primary" value="1">✊</button>
-          <button class="scissorBtn primary" value="2">✌️</button>
-          <button class="paperBtn primary" value="3">✋</button>
-        </article>
-        <div id="modal" class="modal_overlay">
-          <div class="modal_content">
-            <h2>결과확인</h2>
-            <button class="cancel">닫기</button>
-            <p class="modal_result"></p>
-            <p class="modal_result_context"></p>
+      <div class="wrapGame">
+        <section></section>
+        <section class="content">
+          <header id="header">
+            <div class="headerInner">
+              <img src="/assets/img/close-box.png" alt="닫기" />
+            </div>
+          </header>
+          <article class="article">
+            <div class="rock">✊</div>
+            <div class="scissor">✌️</div>
+            <div class="paper">✋</div>
+          </article>
+          <article class="buttonWrap">
+            <button class="rockBtn primary" value="1">✊</button>
+            <button class="scissorBtn primary" value="2">✌️</button>
+            <button class="paperBtn primary" value="3">✋</button>
+          </article>
+          <div id="start_modal">
+            <div class="start_modal_content">
+              <h1>가위바위보</h1>
+              <button id="startGame">시작하기</button>
+            </div>
           </div>
-        </div>
-      </section>
+          <div id="modal" class="modal_overlay">
+            <div class="modal_content">
+              <h1>결과확인</h1>
+              <button class="cancel">닫기</button>
+              <p class="modal_result"></p>
+              <p class="modal_result_context"></p>
+            </div>
+          </div>
+        </section>
+      </div>
     </main>
   </body>
 </html>

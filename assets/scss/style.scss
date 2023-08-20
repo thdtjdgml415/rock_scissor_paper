@@ -1,0 +1,236 @@
+@mixin modalBackGround {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+
+@mixin modalCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+:root {
+  --primary-light: #8abdff;
+  --primary: #6d5dfc;
+  --primary-dark: #5b0eeb;
+
+  --white: #ffffff;
+  --greyLight-1: #e4ebf5;
+  --greyLight-2: #c8d0e7;
+  --greyLight-3: #bec8e4;
+  --greyDark: #9baacf;
+}
+
+$shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+$inner-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
+.wrapGame {
+  width: 100vw;
+  height: 100vh;
+
+  position: relative;
+
+  .content {
+    position: relative;
+    translate: (-50% -50%);
+    left: 50%;
+    top: 50%;
+    width: 500px;
+    height: 400px;
+    background: rgb(255, 255, 255);
+    border: 1px solid #000;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-use-select: none;
+    user-select: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    #header {
+      width: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      .headerInner {
+        width: inherit;
+        height: inherit;
+        background: var(--primary);
+        z-index: 9999;
+      }
+    }
+
+    .article {
+      width: 300px;
+      height: 250px;
+      margin-bottom: 10px;
+
+      position: relative;
+
+      .rock {
+        font-size: 10rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: none;
+
+        &.active {
+          display: block;
+        }
+      }
+
+      .scissor {
+        font-size: 10rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: none;
+
+        &.active {
+          display: block;
+        }
+      }
+
+      .paper {
+        font-size: 10rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: none;
+
+        &.active {
+          display: block;
+        }
+      }
+    }
+
+    .buttonWrap {
+      width: 300px;
+      display: flex;
+      justify-content: space-between;
+
+      > button {
+        width: 5rem;
+        height: 3rem;
+        border-radius: 1rem;
+        font-size: 2rem;
+        border: none;
+        //   box-shadow: $shadow;
+        cursor: pointer;
+        transition: 0.3s ease;
+        background: var(--primary);
+        box-shadow: inset 0.2rem 0.2rem 1rem #8abdff, inset -0.2rem -0.2rem 1rem var(--primary-dark),
+          0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+
+        &.primary {
+          grid-column: 1 / 2;
+          grid-row: 4 / 5;
+          background: var(--primary);
+          color: var(--greyLight-1);
+
+          &:hover {
+            color: var(--white);
+          }
+          &:active {
+            box-shadow: inset 0.2rem 0.2rem 1rem var(--primary-dark), inset -0.2rem -0.2rem 1rem var(--primary-light);
+          }
+        }
+      }
+    }
+  }
+
+  // 결과확인 모달
+  #modal {
+    &.modal_overlay {
+      @include modalBackGround;
+      @include modalCenter;
+      display: none;
+      background: rgba(255, 255, 255, 0.25);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      backdrop-filter: blur(1.5px);
+      -webkit-backdrop-filter: blur(1.5px);
+      border-radius: 10px;
+      &.modal_overlay.open {
+        display: flex;
+      }
+      .modal_content {
+        width: 300px;
+        height: 300px;
+        box-sizing: border-box;
+        border: 1px solid #000;
+        background-color: #fff;
+        padding: 10px;
+        border-radius: 20px;
+        position: relative;
+
+        h1 {
+          font-size: 1rem;
+          text-align: center;
+          display: block;
+          margin-bottom: 20px;
+        }
+        .cancel {
+          position: absolute;
+          right: 20px;
+          top: 10px;
+          display: block;
+        }
+        .modal_result {
+          width: 200px;
+          height: 200px;
+          margin: 0 auto;
+          border: 1px solid #000;
+          font-size: 10rem;
+          text-align: center;
+        }
+        .modal_result_context {
+          text-align: center;
+          margin-top: 20px;
+        }
+      }
+    }
+  }
+
+  //start_modal
+  #start_modal {
+    @include modalBackGround;
+    @include modalCenter;
+    width: inherit;
+    height: inherit;
+    background: rgba(255, 255, 255);
+
+    &.start {
+      display: none;
+    }
+    .start_modal_content {
+      width: 300px;
+      height: 300px;
+      border: 1px solid #000;
+      border-radius: 20px;
+
+      h1 {
+        font-size: 2rem;
+        font-weight: 600;
+        color: #342e3e;
+        font-family: "Tenada";
+        text-align: center;
+        margin: 70px 0;
+      }
+      #startGame {
+        width: 200px;
+        height: 50px;
+        border-radius: 50px;
+        display: block;
+        margin: 0 auto;
+        border: 1px solid var(--primary-light);
+        background: var(--primary-light);
+        color: #000000;
+      }
+    }
+  }
+}
